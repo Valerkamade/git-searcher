@@ -1,22 +1,77 @@
 .app {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
   max-width: 1200px;
   width: 100%;
 }
 
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
-  justify-content: space-between;
-  padding: 25px;
+  flex-direction: column;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "search title";
+  padding: 20px;
   border-bottom: var(--border-width) var(--border-color) solid;
-  gap: 25px;
+  align-items: center;
+
+  @media (min-width: 576px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+
+  @media (min-width: 576px) {
+    justify-content: center;
+  }
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+    gap: 10px;
+  }
 }
 
 .title {
   font-size: var(--font-size-h1);
-  font-weight: normal;
-  padding: 15px;
-  text-align: center;
+  padding: 10px;
+  grid-area: title;
+  justify-self: center;
+  order: 2;
+}
+
+.wrapper {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  position: relative;
+  padding: 0 20px;
+  justify-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.footer {
+  padding: 20px;
+  border-top: var(--border-width) var(--border-color) solid;
 }

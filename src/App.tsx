@@ -9,16 +9,22 @@ function App() {
   return (
     <>
       <header className={cls.header}>
-        <SearchBar />
-        <ThemeToggle />
-      </header>
-      <main>
-        <h1 className={cls.title}>Ищи и просматривай репозитории</h1>
-        <div>
-          <RepoList />
-          <FavoritesList />
+        <h1 className={cls.title}>В поисках репо</h1>
+        <div className={cls.menu}>
+          <ThemeToggle />
+          <SearchBar />
         </div>
+      </header>
+      <main className={cls.main}>
+        <section className={cls.wrapper}>
+          <RepoList typeList="default" />
+
+          <FavoritesList />
+        </section>
       </main>
+      <footer className={cls.footer}>
+        <p>© {new Date().getFullYear()} ValerkaMade</p>
+      </footer>
     </>
   );
 }

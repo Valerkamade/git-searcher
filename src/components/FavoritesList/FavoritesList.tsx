@@ -1,3 +1,5 @@
+import { RepoList } from "@/components/RepoList/RepoList";
+
 export const FavoritesList = () => {
-  return <div className="container"></div>;
+  return <RepoList typeList="favorite" />;
 };
