@@ -6,7 +6,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   justify-content: flex-start;
   position: relative;
 }
@@ -15,9 +15,12 @@
   font-size: var(--font-size-h2);
 }
 
+.owner {
+  color: var(--foreground);
+}
+
 .text {
   font-size: var(--font-size-main);
-  color: var(--foreground);
 }
 
 .wrapper {

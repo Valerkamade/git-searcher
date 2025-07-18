@@ -12,6 +12,7 @@ export interface Repo {
   language: string;
   forks_url: string;
   stargazers_url: string;
+  owner: { login: string };
 }
 
 export const RepoList = () => {

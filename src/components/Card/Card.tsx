@@ -9,7 +9,10 @@ interface CardProps {
 export const Card = ({ repo }: CardProps) => {
   return (
     <div className={cls.card}>
-      <h2 className={cls.title}>{repo.name}</h2>
+      <div className={cls.wrapperTitle}>
+        <h2 className={cls.title}>{repo.name}</h2>
+        <p className={cls.owner}>{repo.owner.login}</p>
+      </div>
       <p className={cls.text}>{repo.description}</p>
       <div className={cls.wrapper}>
         <div className={cls.wrapperButtons}>
