@@ -10,7 +10,7 @@ export const SunIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="currentColor"
+      fill="transparent"
       d="M16 23.847a7.847 7.847 0 1 0 0-15.695 7.847 7.847 0 0 0 0 15.695ZM3.625 16.008H2Zm26.375 0h-1.61ZM16.008 3.625V2Zm0 26.375v-1.61ZM7.247 7.247 6.1 6.1Zm18.652 18.652-1.147-1.147ZM24.753 7.247 25.897 6.1ZM6.101 25.899l1.147-1.147Z"
     />
     <path

@@ -1,5 +1,5 @@
-import { Icons } from "@/components/lib/icons/Icons";
 import { useTheme } from "@/hooks/useTheme";
+import { Icons } from "@/lib/icons/Icons";
 import cls from "./ThemeToggle.module.scss";
 
 export const ThemeToggle = () => {

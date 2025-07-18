@@ -13,3 +13,10 @@
   border-bottom: var(--border-width) var(--border-color) solid;
   gap: 25px;
 }
+
+.title {
+  font-size: var(--font-size-h1);
+  font-weight: normal;
+  padding: 15px;
+  text-align: center;
+}

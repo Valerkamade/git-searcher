@@ -1,0 +1,51 @@
+.card {
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  max-width: var(--card-width);
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.title {
+  font-size: var(--font-size-h2);
+}
+
+.text {
+  font-size: var(--font-size-main);
+  color: var(--foreground);
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.wrapperButtons {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0 0;
+}
+
+.button {
+  display: flex;
+  gap: 5px;
+  font-size: var(--font-size-main);
+  align-items: center;
+}
+
+.buttonDnd {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.lang {
+  color: var(--accent);
+}
