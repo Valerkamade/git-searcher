@@ -1,0 +1,36 @@
+:root {
+  --background: #dfe6d8;
+  --foreground: #6b6e70;
+  --foreground-50: color-mix(in srgb, var(--foreground), transparent 50%);
+  --accent: #86c232;
+  --accent-80: color-mix(in srgb, var(--accent), transparent 80%);
+  --text: #222629;
+  --secondery: #474b4f;
+
+  --font-family: "Rubik", sans-serif;
+  --font-size-h1: 16px;
+  --font-size-h2: 14px;
+  --font-size-h3: 12px;
+  --font-size-main: 12px;
+
+  --border-radius: 6px;
+  --border-radius-modal: 20px;
+  --border-width: 1px;
+  --border-color: var(--foreground-50);
+  --border-color-accent: var(--accent-80);
+
+  --color-hover: var(--accent-80);
+  --color-hover-accent: var(--accent);
+
+  --padding-main: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root .dark {
+    --background: #040109;
+    --foreground: #474b4f;
+    --text: #ffffff;
+    --secondery: #6b6e70;
+    --accent: #61892f;
+  }
+}

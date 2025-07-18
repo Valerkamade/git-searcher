@@ -1,0 +1,15 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  border-bottom: var(--border-width) var(--border-color) solid;
+  gap: 25px;
+}

@@ -1,0 +1,56 @@
+.searchBar {
+  width: 100%;
+  border: solid var(--border-width) var(--border-color);
+  border-radius: var(--border-radius);
+  transition: none;
+  max-width: max-content;
+  color: var(--border-color);
+}
+
+.form {
+  padding: 5px 6px 5px 31px;
+  display: flex;
+  margin-right: auto;
+  position: relative;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  max-width: 220px;
+  border-radius: var(--border-radius);
+}
+
+.input {
+  height: 20px;
+  width: 100%;
+  background: transparent;
+  border: var(--border-width) transparent solid;
+  color: var(--text);
+  padding: 0 5px;
+
+  &:focus {
+    width: 100%;
+    outline: none;
+    border-bottom: var(--border-width) var(--border-color) solid;
+  }
+
+  &::placeholder {
+    color: var(--border-color);
+  }
+}
+
+.button {
+  width: 100%;
+  max-width: 20px;
+  height: auto;
+  max-height: 20px;
+  border: none;
+  background: none;
+  padding: 0;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  color: var(--border-color);
+  cursor: pointer;
+}
