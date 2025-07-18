@@ -144,7 +144,7 @@ export const mock = [
     score: 1.0,
   },
   {
-    id: 694907651,
+    id: 694907652,
     node_id: "R_kgDOKWtzAw",
     name: "nodejs-mesto-frontend",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",
@@ -288,7 +288,7 @@ export const mock = [
     score: 1.0,
   },
   {
-    id: 694907651,
+    id: 694907653,
     node_id: "R_kgDOKWtzAw",
     name: "nodejs-mesto-frontend",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",
@@ -432,7 +432,7 @@ export const mock = [
     score: 1.0,
   },
   {
-    id: 694907651,
+    id: 694907654,
     node_id: "R_kgDOKWtzAw",
     name: "nodejs-mesto-frontend",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",
@@ -576,7 +576,7 @@ export const mock = [
     score: 1.0,
   },
   {
-    id: 694907651,
+    id: 694907655,
     node_id: "R_kgDOKWtzAw",
     name: "nodejs-mesto-frontend",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",
@@ -720,7 +720,7 @@ export const mock = [
     score: 1.0,
   },
   {
-    id: 694907651,
+    id: 694907656,
     node_id: "R_kgDOKWtzAw",
     name: "nodejs-mesto-frontend",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",
@@ -864,7 +864,7 @@ export const mock = [
     score: 1.0,
   },
   {
-    id: 694907651,
+    id: 694907657,
     node_id: "R_kgDOKWtzAw",
     name: "nodejs-mesto-frontend",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",

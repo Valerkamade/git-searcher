@@ -1,4 +1,6 @@
 import { Card } from "@/components/Card/Card";
+import { Modal } from "@/components/Modal/Modal";
+import { RepoInfo } from "@/components/RepoInfo/RepoInfo";
 import { mock } from "@/lib/mock";
 import { useState } from "react";
 
@@ -14,6 +16,8 @@ export interface Repo {
   forks_url: string;
   stargazers_url: string;
   owner: { login: string };
+  created_at: string;
+  clone_url: string;
 }
 
 interface RepoListProps {
@@ -21,7 +25,8 @@ interface RepoListProps {
 }
 
 export const RepoList = ({ typeList = "default" }: RepoListProps) => {
-  const [repoList, setRepoList] = useState<Repo[] | null>(mock);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const [repoList, setRepoList] = useState<Repo[]>(mock);
   const getMessage =
     typeList === "favorite" ? "Избранное" : "Найдены репозитории:";
 
@@ -41,6 +46,9 @@ export const RepoList = ({ typeList = "default" }: RepoListProps) => {
           </ul>
         </>
       )}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <RepoInfo repo={repoList[0]} />
+      </Modal>
     </div>
   );
 };
