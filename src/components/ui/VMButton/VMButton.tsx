@@ -1,27 +1,31 @@
 import { cn } from "@/lib/class-name";
-import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
+import type { ComponentPropsWithoutRef, ElementType } from "react";
 import cls from "./VMButton.module.scss";
 
 export type VMButtonTypes = "default" | "icon" | "cards";
-interface VMButtonProps
-  extends PropsWithChildren,
-    ButtonHTMLAttributes<HTMLButtonElement> {
-  typeButton: VMButtonTypes;
+
+interface VMButtonProps<T extends ElementType = "button">
+  extends ComponentPropsWithoutRef<"button"> {
+  typeButton?: VMButtonTypes;
   className?: string;
+  as?: T;
 }
 
-export const VMButton = ({
+export const VMButton = <T extends ElementType = "button">({
   className,
   children,
   typeButton = "default",
+  as,
   ...restProps
-}: VMButtonProps) => {
+}: VMButtonProps<T>) => {
+  const Element = as || "button";
+
   return (
-    <button
-      {...restProps}
+    <Element
       className={cn(cls.button, {}, [cls[typeButton], className])}
+      {...restProps}
     >
       {children}
-    </button>
+    </Element>
   );
 };

@@ -16,6 +16,7 @@ export interface Repo {
   owner: { login: string };
   created_at: string;
   clone_url: string;
+  html_url: string;
 }
 
 interface RepoListProps {
@@ -24,8 +25,7 @@ interface RepoListProps {
 
 export const RepoList = ({ typeList = "default" }: RepoListProps) => {
   const [repoList, setRepoList] = useState<Repo[]>(mock);
-  const getMessage =
-    typeList === "favorite" ? "Избранное" : "Найдены репозитории:";
+  const getMessage = typeList === "favorite" ? "Избранное" : "Репозитории";
 
   return (
     <div className={cls.container}>
@@ -37,7 +37,7 @@ export const RepoList = ({ typeList = "default" }: RepoListProps) => {
           <ul className={cls.repoList}>
             {repoList?.map((repo) => (
               <li className={cls.repoItem} key={repo.id}>
-                <Card repo={repo} />
+                <Card repo={repo} onClick={() => {}} />
               </li>
             ))}
           </ul>

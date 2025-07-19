@@ -1,13 +1,19 @@
 import { SearchIcon } from "@/components/ui/icons/search-icon/SearchIcon";
+import { VMButton } from "@/components/ui/VMButton/VMButton";
 import cls from "./SearchBar.module.scss";
 
 export const SearchBar = () => {
   return (
     <div className={cls.searchBar}>
       <form className={cls.form} onSubmit={() => {}}>
-        <button className={cls.button} type="submit">
+        <VMButton
+          className={cls.button}
+          type="submit"
+          typeButton="icon"
+          onClick={() => {}}
+        >
           <SearchIcon />
-        </button>
+        </VMButton>
         <label className={cls.label} htmlFor="search-input">
           <input
             className={cls.input}

@@ -1,5 +1,7 @@
 import type { Repo } from "@/components/RepoList/RepoList";
 import { Icons } from "@/components/ui/icons/Icons";
+import { VMButton } from "@/components/ui/VMButton/VMButton";
+import { VMLink } from "@/components/ui/VMLink/VMLink";
 import cls from "./RepoInfo.module.scss";
 
 interface RepoInfo {
@@ -13,13 +15,22 @@ export const RepoInfo = ({ repo }: RepoInfo) => {
 
   return (
     <div className={cls.repoInfo}>
-      <h2 className={cls.title}>{repo.name}</h2>
-      <p>{repo.owner.login}</p>
-      <p>{repo.description}</p>
-      <p>{createdAt}</p>
-      <div className={cls.wrapperButtons}>
-        <button
+      <div className={cls.titleWrapper}>
+        <h2 className={cls.title}>
+          <VMLink href={repo.clone_url}>{repo.name}</VMLink>
+        </h2>
+        <VMLink href={repo.forks_url}>{repo.owner.login}</VMLink>
+      </div>
+      <div className={cls.descriptionWrapper}>
+        <h3 className={cls.subtitle}>Описание:</h3>
+        <p className={cls.text}>{repo.description}</p>
+        <h3 className={cls.subtitle}>Язык:</h3>
+        <p className={cls.text}>{repo.language}</p>
+
+        <h3 className={cls.subtitle}>Наблюдатели:</h3>
+        <VMButton
           className={cls.button}
+          typeButton="icon"
           type="button"
           onClick={() => {
             console.log(repo.stargazers_url);
@@ -28,11 +39,12 @@ export const RepoInfo = ({ repo }: RepoInfo) => {
           <Icons type="star" />
 
           {repo.stargazers_count}
-        </button>
-
-        <button
+        </VMButton>
+        <h3 className={cls.subtitle}>Форки:</h3>
+        <VMButton
           className={cls.button}
           type="button"
+          typeButton="icon"
           onClick={() => {
             console.log(repo.forks_url);
           }}
@@ -40,10 +52,11 @@ export const RepoInfo = ({ repo }: RepoInfo) => {
           <Icons type="fork" />
 
           {repo.forks_count}
-        </button>
+        </VMButton>
+
+        <h3 className={cls.subtitle}>Создан:</h3>
+        <p className={cls.text}>{createdAt}</p>
       </div>
-      <p className={cls.lang}>{repo.language}</p>
-      <button>{repo.clone_url}</button>
     </div>
   );
 };

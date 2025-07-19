@@ -5,11 +5,17 @@ import cls from "./Card.module.scss";
 
 interface CardProps {
   repo: Repo;
+  onClick?: () => void;
 }
 
-export const Card = ({ repo }: CardProps) => {
+export const Card = ({ repo, onClick }: CardProps) => {
   return (
-    <VMButton className={cls.card} typeButton="cards" type="button">
+    <VMButton
+      as="div"
+      className={cls.card}
+      typeButton="cards"
+      onClick={onClick}
+    >
       <div className={cls.wrapperTitle}>
         <h2 className={cls.title}>{repo.name}</h2>
         <p className={cls.owner}>{repo.owner.login}</p>

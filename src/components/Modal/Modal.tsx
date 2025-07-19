@@ -1,3 +1,4 @@
+import { VMButton } from "@/components/ui/VMButton/VMButton";
 import { cn } from "@/lib/class-name";
 import { type PropsWithChildren, useState } from "react";
 import { createPortal } from "react-dom";
@@ -22,9 +23,14 @@ export const Modal = ({ children }: ModalProps) => {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className={cls.modalContent}>
-        <button className={cls.button} type="button" onClick={onClose}>
-          X
-        </button>
+        <VMButton
+          className={cls.close}
+          type="button"
+          onClick={onClose}
+          typeButton="icon"
+        >
+          x
+        </VMButton>
         {children}
       </div>
     </div>,

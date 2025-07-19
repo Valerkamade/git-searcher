@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--accent-90);
+  background: var(--foreground-50);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,20 +25,25 @@
 
 .modalContent {
   background: var(--background);
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
   border: var(--border-width) solid var(--border-color);
-  //  transform: translateY(-20px);
-  //  transition: transform 0.3s;
-  //
-  //  &.visible {
-  //    transform: translateY(0);
-  //  }
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s;
+
+  &.visible {
+    transform: translateY(0);
+  }
 }
 
-.button {
+.close {
   width: 24px;
   height: 24px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: var(--foreground);
 }
