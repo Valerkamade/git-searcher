@@ -1,6 +1,5 @@
 import { Card } from "@/components/Card/Card";
-import { mock } from "@/lib/mock";
-import { useState } from "react";
+import { useRepo } from "@/hooks/useRepo";
 
 import cls from "./RepoList.module.scss";
 
@@ -24,25 +23,17 @@ interface RepoListProps {
 }
 
 export const RepoList = ({ typeList = "default" }: RepoListProps) => {
-  const [repoList, setRepoList] = useState<Repo[]>(mock);
+  const { repoList } = useRepo();
   const getMessage = typeList === "favorite" ? "Избранное" : "Репозитории";
 
   return (
     <div className={cls.container}>
-      {repoList === null ? (
-        <p className={cls.message}>Начните поиск</p>
-      ) : (
-        <>
-          <p className={cls.message}>{getMessage}</p>
-          <ul className={cls.repoList}>
-            {repoList?.map((repo) => (
-              <li className={cls.repoItem} key={repo.id}>
-                <Card repo={repo} onClick={() => {}} />
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+      <p className={cls.message}>{getMessage}</p>
+      <ul className={cls.repoList}>
+        {repoList?.map((repo) => (
+          <Card key={repo.id} repo={repo} onClick={() => {}} />
+        ))}
+      </ul>
     </div>
   );
 };

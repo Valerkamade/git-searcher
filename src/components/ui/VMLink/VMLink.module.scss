@@ -2,6 +2,7 @@
   cursor: pointer;
   color: inherit;
   transition: color 0.3s;
+  margin-right: auto;
 
   &:hover {
     color: var(--accent);

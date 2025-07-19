@@ -2,7 +2,7 @@ export const mock = [
   {
     id: 694907651,
     node_id: "R_kgDOKWtzAw",
-    name: "nodejs-mesto-frontend",
+    name: "nodejs-mesto",
     full_name: "yandex-praktikum/nodejs-mesto-frontend",
     private: false,
     owner: {

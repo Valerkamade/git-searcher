@@ -4,11 +4,12 @@ import { RepoInfo } from "@/components/RepoInfo/RepoInfo";
 import { RepoList } from "@/components/RepoList/RepoList";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
-import { mock } from "@/lib/mock";
+import { useModal } from "@/hooks/useModal";
 
 import cls from "./App.module.scss";
 
 function App() {
+  const { error } = useModal();
   return (
     <>
       <header className={cls.header}>
@@ -28,9 +29,7 @@ function App() {
       <footer className={cls.footer}>
         <p>© {new Date().getFullYear()} ValerkaMade</p>
       </footer>
-      <Modal>
-        <RepoInfo repo={mock[0]} />
-      </Modal>
+      <Modal>{error ? error : <RepoInfo />}</Modal>
     </>
   );
 }

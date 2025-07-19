@@ -1,4 +1,6 @@
 import App from "@/App";
+import { ModalProvider } from "@/providers/ModalProvider";
+import { RepoProvider } from "@/providers/RepoProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -12,8 +14,12 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <RepoProvider>
+      <ThemeProvider>
+        <ModalProvider>
+          <App />
+        </ModalProvider>
+      </ThemeProvider>
+    </RepoProvider>
   </StrictMode>,
 );

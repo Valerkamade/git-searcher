@@ -1,16 +1,20 @@
 .card {
+  width: 100%;
+  max-width: var(--card-width);
+  position: relative;
+  height: max-content;
+  color: var(--text);
+  text-align: start;
+}
+
+.cardButton {
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius);
-  max-width: var(--card-width);
-  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: flex-start;
-  position: relative;
-  height: max-content;
-  color: var(--text);
   text-align: start;
 }
 
@@ -39,6 +43,9 @@
   gap: 10px;
   padding: 10px 0 0;
   margin-right: auto;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
 .button {
@@ -46,6 +53,7 @@
   gap: 5px;
   font-size: var(--font-size-main);
   align-items: center;
+  z-index: 100;
 }
 
 .buttonDnd {
@@ -57,4 +65,5 @@
 .lang {
   color: var(--accent);
   font-weight: bold;
+  margin-left: auto;
 }
