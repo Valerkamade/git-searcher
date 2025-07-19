@@ -1,7 +1,10 @@
 import { FavoritesList } from "@/components/FavoritesList/FavoritesList";
+import { Modal } from "@/components/Modal/Modal";
+import { RepoInfo } from "@/components/RepoInfo/RepoInfo";
 import { RepoList } from "@/components/RepoList/RepoList";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
+import { mock } from "@/lib/mock";
 
 import cls from "./App.module.scss";
 
@@ -25,6 +28,9 @@ function App() {
       <footer className={cls.footer}>
         <p>© {new Date().getFullYear()} ValerkaMade</p>
       </footer>
+      <Modal>
+        <RepoInfo repo={mock[0]} />
+      </Modal>
     </>
   );
 }

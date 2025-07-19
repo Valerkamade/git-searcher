@@ -1,4 +1,4 @@
-import { SearchIcon } from "@/lib/icons/search-icon/SearchIcon";
+import { SearchIcon } from "@/components/ui/icons/search-icon/SearchIcon";
 import cls from "./SearchBar.module.scss";
 
 export const SearchBar = () => {

@@ -1,15 +1,20 @@
 import { cn } from "@/lib/class-name";
-import type { PropsWithChildren } from "react";
+import { type PropsWithChildren, useState } from "react";
 import { createPortal } from "react-dom";
 import cls from "./Modal.module.scss";
 
 interface ModalProps extends PropsWithChildren {
-  isOpen: boolean;
-  onClose: () => void;
+  // isOpen: boolean;
+  // onClose: () => void;
 }
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({ children }: ModalProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   if (!isOpen) return null;
+
+  const onClose = () => {
+    setIsOpen(false);
+  };
 
   return createPortal(
     <div

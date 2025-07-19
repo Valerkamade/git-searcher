@@ -1,0 +1,24 @@
+.button {
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  max-height: min-content;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.cards {
+  &:hover {
+    border: 1px solid var(--accent);
+  }
+}

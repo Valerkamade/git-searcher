@@ -1,5 +1,5 @@
 import type { Repo } from "@/components/RepoList/RepoList";
-import { Icons } from "@/lib/icons/Icons";
+import { Icons } from "@/components/ui/icons/Icons";
 import cls from "./RepoInfo.module.scss";
 
 interface RepoInfo {

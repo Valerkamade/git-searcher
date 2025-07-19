@@ -10,6 +10,8 @@
   justify-content: flex-start;
   position: relative;
   height: max-content;
+  color: var(--text);
+  text-align: start;
 }
 
 .title {
@@ -50,7 +52,6 @@
   position: absolute;
   top: 5px;
   right: 5px;
-  cursor: pointer;
 }
 
 .lang {

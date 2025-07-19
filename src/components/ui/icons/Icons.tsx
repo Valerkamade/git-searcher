@@ -1,9 +1,9 @@
-import { DndIcon } from "@/lib/icons/dnd-icon/DndIcon";
-import { ForkIcon } from "@/lib/icons/fork-icon/ForkIcon";
-import { MoonIcon } from "@/lib/icons/moon-icon/MoonIcon";
-import { SearchIcon } from "@/lib/icons/search-icon/SearchIcon";
-import { StarIcon } from "@/lib/icons/star-icon/StarIcon";
-import { SunIcon } from "@/lib/icons/sun-icon/SunIcon";
+import { DndIcon } from "@/components/ui/icons/dnd-icon/DndIcon";
+import { ForkIcon } from "@/components/ui/icons/fork-icon/ForkIcon";
+import { MoonIcon } from "@/components/ui/icons/moon-icon/MoonIcon";
+import { SearchIcon } from "@/components/ui/icons/search-icon/SearchIcon";
+import { StarIcon } from "@/components/ui/icons/star-icon/StarIcon";
+import { SunIcon } from "@/components/ui/icons/sun-icon/SunIcon";
 
 import type { SVGProps } from "react";
 

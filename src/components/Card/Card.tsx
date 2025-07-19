@@ -1,5 +1,6 @@
 import type { Repo } from "@/components/RepoList/RepoList";
-import { Icons } from "@/lib/icons/Icons";
+import { Icons } from "@/components/ui/icons/Icons";
+import { VMButton } from "@/components/ui/VMButton/VMButton";
 import cls from "./Card.module.scss";
 
 interface CardProps {
@@ -8,7 +9,7 @@ interface CardProps {
 
 export const Card = ({ repo }: CardProps) => {
   return (
-    <div className={cls.card}>
+    <VMButton className={cls.card} typeButton="cards" type="button">
       <div className={cls.wrapperTitle}>
         <h2 className={cls.title}>{repo.name}</h2>
         <p className={cls.owner}>{repo.owner.login}</p>
@@ -16,9 +17,10 @@ export const Card = ({ repo }: CardProps) => {
       <p className={cls.text}>{repo.description}</p>
       <div className={cls.wrapper}>
         <div className={cls.wrapperButtons}>
-          <button
+          <VMButton
             className={cls.button}
             type="button"
+            typeButton="icon"
             onClick={() => {
               console.log(repo.stargazers_url);
             }}
@@ -26,11 +28,12 @@ export const Card = ({ repo }: CardProps) => {
             <Icons type="star" />
 
             {repo.stargazers_count}
-          </button>
+          </VMButton>
 
-          <button
+          <VMButton
             className={cls.button}
             type="button"
+            typeButton="icon"
             onClick={() => {
               console.log(repo.forks_url);
             }}
@@ -38,13 +41,13 @@ export const Card = ({ repo }: CardProps) => {
             <Icons type="fork" />
 
             {repo.forks_count}
-          </button>
+          </VMButton>
         </div>
-        <button className={cls.buttonDnd} type="button">
+        <VMButton className={cls.buttonDnd} typeButton="icon" type="button">
           <Icons className={cls.dnd} type="dnd" />
-        </button>
+        </VMButton>
         <p className={cls.lang}>{repo.language}</p>
       </div>
-    </div>
+    </VMButton>
   );
 };

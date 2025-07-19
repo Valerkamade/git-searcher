@@ -1,5 +1,6 @@
+import { Icons } from "@/components/ui/icons/Icons";
+import { VMButton } from "@/components/ui/VMButton/VMButton";
 import { useTheme } from "@/hooks/useTheme";
-import { Icons } from "@/lib/icons/Icons";
 import cls from "./ThemeToggle.module.scss";
 
 export const ThemeToggle = () => {
@@ -12,11 +13,13 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <button
+    <VMButton
       className={`${cls.button}  ${theme === "light" ? "text-text-secondary" : "text-yellow-dark"}`}
       onClick={toggleTheme}
+      typeButton="icon"
+      type="button"
     >
       <Icons type={theme === "light" ? "moon" : "sun"} width={22} height={22} />
-    </button>
+    </VMButton>
   );
 };

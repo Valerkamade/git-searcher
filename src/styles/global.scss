@@ -28,18 +28,6 @@ a {
   }
 }
 
-button {
-  color: var(--foreground);
-  background-color: transparent;
-  border: none;
-  transition: color 0.3s;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--accent);
-  }
-}
-
 .container {
   flex-grow: 1;
   display: flex;
