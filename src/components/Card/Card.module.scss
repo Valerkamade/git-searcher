@@ -26,8 +26,13 @@
   color: var(--foreground);
 }
 
-.text {
+.description {
   font-size: var(--font-size-main);
+  height: 32px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -66,4 +71,5 @@
   color: var(--accent);
   font-weight: bold;
   margin-left: auto;
+  min-height: 20px;
 }

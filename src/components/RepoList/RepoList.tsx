@@ -1,5 +1,4 @@
 import { Card } from "@/components/Card/Card";
-import { useRepo } from "@/hooks/useRepo";
 
 import cls from "./RepoList.module.scss";
 
@@ -19,18 +18,22 @@ export interface Repo {
 }
 
 interface RepoListProps {
-  typeList: "default" | "favorite";
+  typeList?: "default" | "favorite";
+  filteredRepoList: Repo[] | null;
 }
 
-export const RepoList = ({ typeList = "default" }: RepoListProps) => {
-  const { repoList } = useRepo();
+export const RepoList = ({
+  typeList = "default",
+  filteredRepoList,
+}: RepoListProps) => {
   const getMessage = typeList === "favorite" ? "Избранное" : "Репозитории";
 
   return (
     <div className={cls.container}>
       <p className={cls.message}>{getMessage}</p>
+
       <ul className={cls.repoList}>
-        {repoList?.map((repo) => (
+        {filteredRepoList?.map((repo) => (
           <Card key={repo.id} repo={repo} onClick={() => {}} />
         ))}
       </ul>

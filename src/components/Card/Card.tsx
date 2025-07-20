@@ -29,7 +29,7 @@ export const Card = ({ repo }: CardProps) => {
           <h2 className={cls.title}>{repo.name}</h2>
           <p className={cls.owner}>{repo.owner.login}</p>
         </div>
-        <p className={cls.text}>{repo.description}</p>
+        <p className={cls.description}>{repo.description}</p>
 
         <p className={cls.lang}>{repo.language}</p>
       </VMButton>

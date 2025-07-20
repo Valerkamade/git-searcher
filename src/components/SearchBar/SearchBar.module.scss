@@ -20,33 +20,6 @@
   width: 100%;
 }
 
-.label {
-  width: 100%;
-  display: flex;
-  max-width: 220px;
-  border-radius: var(--border-radius);
-  position: relative;
-}
-
-.input {
-  height: 20px;
-  width: 100%;
-  background: transparent;
-  border: var(--border-width) transparent solid;
-  color: var(--text);
-  padding: 0 5px;
-
-  &:focus {
-    width: 100%;
-    outline: none;
-    border-bottom: var(--border-width) var(--border-color) solid;
-  }
-
-  &::placeholder {
-    color: var(--border-color);
-  }
-}
-
 .button {
   width: 100%;
   max-width: 20px;
@@ -63,4 +36,6 @@
 .loading {
   position: absolute;
   right: 6px;
+  color: var(--accent);
+  bottom: 3px;
 }

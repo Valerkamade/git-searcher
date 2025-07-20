@@ -1,9 +1,9 @@
 import { SearchIcon } from "@/components/ui/icons/search-icon/SearchIcon";
 import { VMButton } from "@/components/ui/VMButton/VMButton";
+import { VMInput } from "@/components/ui/VMInput/VMInput";
 import { useModal } from "@/hooks/useModal";
 import { useRepo } from "@/hooks/useRepo";
-import { mock } from "@/lib/mock";
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useState } from "react";
 import cls from "./SearchBar.module.scss";
 
 export const SearchBar = () => {
@@ -12,18 +12,9 @@ export const SearchBar = () => {
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    // if (!query.trim()) {
-    setRepoList(mock);
-    //   return;
-    // }
-    //
-    // const timer = setTimeout(() => {
-    //   searchRepos(query).then();
-    // }, 500);
-    //
-    // return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   setRepoList(mock);
+  // }, []);
 
   const searchRepos = async (searchQuery: string) => {
     setLoading(true);
@@ -35,7 +26,7 @@ export const SearchBar = () => {
       );
 
       if (!response.ok) {
-        throw new Error(
+        return new Error(
           "GitHub API превышен лимит запросов или некорректный запрос",
         );
       }
@@ -73,16 +64,15 @@ export const SearchBar = () => {
           >
             <SearchIcon />
           </VMButton>
-          <label className={cls.label} htmlFor="search-input">
-            <input
-              className={cls.input}
-              placeholder="Search..."
-              type="search"
-              id="search-input"
-              onChange={(e) => setQuery(e.target.value)}
-            />
+
+          <VMInput
+            id="search-input"
+            placeholder="Search..."
+            type="search"
+            onChange={(e) => setQuery(e.target.value)}
+          >
             {loading && <span className={cls.loading}>Loading...</span>}
-          </label>
+          </VMInput>
         </form>
       </div>
     </>

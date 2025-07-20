@@ -1,0 +1,15 @@
+.filterContainer {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.filterInput {
+  border-radius: 0;
+  border-bottom: var(--border-width) solid var(--border-color);
+  max-width: none;
+
+  @media (min-width: 768px) {
+    max-width: 300px;
+  }
+}

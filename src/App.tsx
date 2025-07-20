@@ -1,8 +1,8 @@
 import { FavoritesList } from "@/components/FavoritesList/FavoritesList";
 import { Modal } from "@/components/Modal/Modal";
 import { RepoInfo } from "@/components/RepoInfo/RepoInfo";
-import { RepoList } from "@/components/RepoList/RepoList";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
+import { SearchRepoList } from "@/components/SearchRepoList/SearchRepoList";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import { useModal } from "@/hooks/useModal";
 
@@ -21,7 +21,7 @@ function App() {
       </header>
       <main className={cls.main}>
         <section className={cls.wrapper}>
-          <RepoList typeList="default" />
+          <SearchRepoList />
 
           <FavoritesList />
         </section>

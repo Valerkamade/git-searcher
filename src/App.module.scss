@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 1200px;
+  max-width: var(--max-width);
   width: 100%;
 }
 
@@ -67,7 +67,11 @@
   justify-items: center;
 
   @media (min-width: 1024px) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr max-content;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0;
   }
 }
 
