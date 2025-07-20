@@ -1,6 +1,6 @@
 import { Modal } from "@/components/Modal/Modal";
 import { RepoInfo } from "@/components/RepoInfo/RepoInfo";
-import { RepoList } from "@/components/RepoList/RepoList";
+import { type Repo, RepoList } from "@/components/RepoList/RepoList";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
 import { SearchRepoList } from "@/components/SearchRepoList/SearchRepoList";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
@@ -16,10 +16,11 @@ function App() {
   const { favorites, addToFavorites, removeFromFavorites, reorderFavorites } =
     useFavorites();
 
-  const { handleDragEnd } = useDragAndDrop({
+  const { handleDragEnd } = useDragAndDrop<Repo>({
     onAddItem: addToFavorites,
     onRemoveItem: removeFromFavorites,
     onReorder: reorderFavorites,
+    itemList: favorites,
   });
 
   return (
@@ -35,12 +36,7 @@ function App() {
         <section className={cls.wrapper}>
           <DragDropContext onDragEnd={handleDragEnd}>
             <SearchRepoList />
-            <RepoList
-              typeList="favorites"
-              repos={favorites}
-              isFavoriteList
-              onRemove={removeFromFavorites}
-            />
+            <RepoList typeList="favorites" repos={favorites} />
           </DragDropContext>
         </section>
       </main>

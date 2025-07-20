@@ -25,16 +25,9 @@ export interface Repo {
 interface RepoListProps {
   typeList: "search" | "favorites";
   repos?: Repo[] | null;
-  isFavoriteList?: boolean;
-  onRemove?: (repoId: number) => void;
 }
 
-export const RepoList = ({
-  typeList,
-  repos,
-  onRemove,
-  isFavoriteList,
-}: RepoListProps) => {
+export const RepoList = ({ typeList, repos }: RepoListProps) => {
   return (
     <div className={cls.repoList}>
       <p className={cls.message}>
@@ -61,12 +54,7 @@ export const RepoList = ({
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <Card
-                      repo={repo}
-                      onRemove={
-                        isFavoriteList ? () => onRemove?.(repo.id) : undefined
-                      }
-                    />
+                    <Card repo={repo} />
                   </li>
                 )}
               </Draggable>

@@ -7,14 +7,10 @@ import { type FormEvent, useState } from "react";
 import cls from "./SearchBar.module.scss";
 
 export const SearchBar = () => {
-  const { setRepoList } = useRepo();
+  const { setRepoList, setFilteredList } = useRepo();
   const { setIsOpen, setError } = useModal();
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   setRepoList(mock);
-  // }, []);
 
   const searchRepos = async (searchQuery: string) => {
     setLoading(true);
@@ -32,8 +28,9 @@ export const SearchBar = () => {
       }
 
       const data = await response.json();
-
+      console.log(data.items);
       setRepoList(data.items);
+      setFilteredList(data.items);
     } catch (err) {
       console.log("Error:", err);
       setIsOpen(true);

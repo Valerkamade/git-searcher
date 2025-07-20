@@ -1,32 +1,46 @@
-import type { Repo } from "@/components/RepoList/RepoList";
 import { VMButton } from "@/components/ui/VMButton/VMButton";
 import { VMInput } from "@/components/ui/VMInput/VMInput";
+import { useFavorites } from "@/hooks/useFavorites";
 import { useModal } from "@/hooks/useModal";
 import { useRepo } from "@/hooks/useRepo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import cls from "./RepoFilter.module.scss";
 
-interface RepoFilterProps {
-  repos: Repo[];
-  onFilter: (filteredRepos: any[]) => void;
-}
+interface RepoFilterProps {}
 
-export const RepoFilter = ({ repos, onFilter }: RepoFilterProps) => {
+export const RepoFilter = ({}: RepoFilterProps) => {
+  const { setFilteredList, onReset, repoList } = useRepo();
   const [filterText, setFilterText] = useState<string>("");
-  const { repoList } = useRepo();
   const { setError, setIsOpen } = useModal();
-  useEffect(() => {
-    const filtered = repoList?.filter((repo) =>
-      repo.name.toLowerCase().includes(filterText.toLowerCase()),
-    );
-    onFilter(filtered ?? []);
+  const { favorites } = useFavorites();
 
-    if (filtered?.length === 0) {
+  const handleFilterChange = (value: string) => {
+    setFilterText(value);
+
+    const filtered = repoList?.filter((repo) =>
+      repo.name.toLowerCase().includes(value.toLowerCase()),
+    );
+
+    if (!filtered) {
+      setFilteredList([]);
+      return;
+    }
+
+    const favoriteIds = new Set(favorites.map((repo) => repo.id));
+    const list = filtered.filter((repo) => !favoriteIds.has(repo.id));
+
+    setFilteredList(list);
+
+    if (filtered?.length === 0 && value.length !== 0) {
       setError("Нет совпадений");
       setIsOpen(true);
     }
-  }, [filterText, repos, onFilter]);
+  };
 
+  const handleReset = () => {
+    setFilterText("");
+    onReset(favorites);
+  };
   return (
     <form className={cls.filterContainer}>
       <VMInput
@@ -34,16 +48,11 @@ export const RepoFilter = ({ repos, onFilter }: RepoFilterProps) => {
         type="search"
         placeholder="Введите название..."
         value={filterText}
-        onChange={(e) => setFilterText(e.target.value)}
+        onChange={(e) => handleFilterChange(e.target.value)}
         className={cls.filterInput}
       />
       {filterText.length > 0 && (
-        <VMButton
-          type="button"
-          onClick={() => setFilterText("")}
-          disabled={!filterText}
-          typeButton="icon"
-        >
+        <VMButton type="button" onClick={handleReset} typeButton="icon">
           x
         </VMButton>
       )}

@@ -8,10 +8,9 @@ import cls from "./Card.module.scss";
 
 interface CardProps {
   repo: Repo;
-  onRemove?: (id: number) => void;
 }
 
-export const Card = ({ repo, onRemove }: CardProps) => {
+export const Card = ({ repo }: CardProps) => {
   const { setIsOpen, setInfo } = useModal();
   const { isFavorite } = useFavorites();
 
@@ -69,16 +68,6 @@ export const Card = ({ repo, onRemove }: CardProps) => {
         <VMButton className={cls.buttonDnd} typeButton="icon" type="button">
           <Icons className={cls.dnd} type="dnd" />
         </VMButton>
-        {onRemove && (
-          <VMButton
-            onClick={() => onRemove(repo.id)}
-            className={cls.removeButton}
-            type="button"
-            typeButton="icon"
-          >
-            <Icons type="trash" />
-          </VMButton>
-        )}
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ export const FavoritesProvider = ({ children }: DndProviderProps) => {
   const [favorites, setFavorites] = useState<Repo[]>([]);
 
   const addToFavorites = useCallback((repo: Repo) => {
-    console.log("Adding to favorites:", repo.id);
     setFavorites((prev) => {
       if (prev.some((f) => f.id === repo.id)) {
         console.log("Already in favorites");

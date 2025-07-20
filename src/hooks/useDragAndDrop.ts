@@ -1,20 +1,22 @@
-import type { Repo } from "@/components/RepoList/RepoList";
 import { useRepo } from "@/hooks/useRepo";
 import type { DropResult } from "@hello-pangea/dnd";
 import { useState } from "react";
 
-interface UseDragAndDropProps {
-  onReorder?: (items: Repo[]) => void;
-  onAddItem?: (item: Repo) => void;
+interface UseDragAndDropProps<T> {
+  onReorder?: (items: T[]) => void;
+  onAddItem?: (item: T) => void;
   onRemoveItem?: (itemId: number) => void;
+  itemList: T[];
 }
 
 export const useDragAndDrop = <T extends { id: number }>({
   onReorder,
   onAddItem,
   onRemoveItem,
-}: UseDragAndDropProps) => {
-  const { repoList } = useRepo();
+  itemList,
+}: UseDragAndDropProps<T>) => {
+  const [items, setItems] = useState<T[]>(itemList);
+  const { repoList, filteredList, setFilteredList } = useRepo();
   const [draggedItem, setDraggedItem] = useState<T | null>(null);
 
   const handleDragEnd = (result: DropResult) => {
@@ -22,19 +24,26 @@ export const useDragAndDrop = <T extends { id: number }>({
 
     if (!destination) {
       setDraggedItem(null);
-      console.error("Drag cancelled");
-
       return;
     }
 
     const [_, itemIdStr] = draggableId.split("-");
     const itemId = parseInt(itemIdStr, 10);
 
-    if (source.droppableId === destination.droppableId && repoList) {
-      const newItems = [...repoList];
-      const [movedItem] = newItems?.splice(source.index, 1);
-      newItems.splice(destination.index, 0, movedItem);
+    if (
+      source.droppableId === destination.droppableId &&
+      source.droppableId === "favorites"
+    ) {
+      const newItems = [...items];
 
+      const [movedItem] = newItems?.splice(source.index, 1);
+      if (!movedItem) {
+        console.error("Item not found at index", source.index);
+        return;
+      }
+
+      newItems.splice(destination.index, 0, movedItem);
+      setItems(newItems);
       onReorder?.(newItems);
       return;
     }
@@ -45,11 +54,18 @@ export const useDragAndDrop = <T extends { id: number }>({
     ) {
       const itemToAdd = repoList?.find((item) => item.id === itemId);
 
-      if (!itemToAdd) {
+      const updatedFilteredList = filteredList?.filter(
+        (item) => item.id !== itemId,
+      );
+
+      if (!itemToAdd || !updatedFilteredList) {
         console.error("Item not found: ", itemId);
         return;
       }
+
+      setItems((prev) => (prev ? [...prev, itemToAdd] : [itemToAdd]));
       onAddItem?.(itemToAdd);
+      setFilteredList(updatedFilteredList);
       return;
     }
 
@@ -57,7 +73,16 @@ export const useDragAndDrop = <T extends { id: number }>({
       source.droppableId === "favorites" &&
       destination.droppableId === "search"
     ) {
+      const itemToRemove = repoList?.find((item) => item.id === itemId);
+
+      if (!itemToRemove) {
+        console.error("Item not found in favorites:", itemId);
+        return;
+      }
+
+      setItems((prev) => prev?.filter((item) => item.id !== itemId));
       onRemoveItem?.(itemId);
+      setFilteredList([...filteredList, itemToRemove]);
       return;
     }
 
