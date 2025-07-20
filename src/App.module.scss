@@ -59,15 +59,16 @@
 
 .wrapper {
   display: grid;
+  width: 100%;
   gap: 20px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
   height: 100%;
   position: relative;
   padding: 0 20px;
   justify-items: center;
 
   @media (min-width: 1024px) {
-    grid-template-columns: 2fr max-content;
+    grid-template-columns: 3fr 1fr;
   }
 
   @media (min-width: 1280px) {

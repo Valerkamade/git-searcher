@@ -1,4 +1,5 @@
 import App from "@/App";
+import { FavoritesProvider } from "@/providers/FavoritesProvider";
 import { ModalProvider } from "@/providers/ModalProvider";
 import { RepoProvider } from "@/providers/RepoProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
@@ -17,7 +18,9 @@ createRoot(rootElement).render(
     <RepoProvider>
       <ThemeProvider>
         <ModalProvider>
-          <App />
+          <FavoritesProvider>
+            <App />
+          </FavoritesProvider>
         </ModalProvider>
       </ThemeProvider>
     </RepoProvider>

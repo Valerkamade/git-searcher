@@ -1,4 +1,9 @@
 import { Card } from "@/components/Card/Card";
+import {
+  Draggable,
+  Droppable,
+  type DroppableProvided,
+} from "@hello-pangea/dnd";
 
 import cls from "./RepoList.module.scss";
 
@@ -18,25 +23,58 @@ export interface Repo {
 }
 
 interface RepoListProps {
-  typeList?: "default" | "favorite";
-  filteredRepoList: Repo[] | null;
+  typeList: "search" | "favorites";
+  repos?: Repo[] | null;
+  isFavoriteList?: boolean;
+  onRemove?: (repoId: number) => void;
 }
 
 export const RepoList = ({
-  typeList = "default",
-  filteredRepoList,
+  typeList,
+  repos,
+  onRemove,
+  isFavoriteList,
 }: RepoListProps) => {
-  const getMessage = typeList === "favorite" ? "Избранное" : "Репозитории";
-
   return (
-    <div className={cls.container}>
-      <p className={cls.message}>{getMessage}</p>
+    <div className={cls.repoList}>
+      <p className={cls.message}>
+        {typeList === "favorites" ? "Избранное" : "Репозитории"}
+      </p>
 
-      <ul className={cls.repoList}>
-        {filteredRepoList?.map((repo) => (
-          <Card key={repo.id} repo={repo} onClick={() => {}} />
-        ))}
-      </ul>
+      <Droppable droppableId={typeList}>
+        {(provided: DroppableProvided) => (
+          <ul
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={cls.list}
+          >
+            {repos?.filter(Boolean).map((repo: Repo, index: number) => (
+              <Draggable
+                key={repo.id}
+                draggableId={`${typeList}-${repo.id}`}
+                index={index}
+              >
+                {(provided) => (
+                  <li
+                    className={cls.item}
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <Card
+                      repo={repo}
+                      onRemove={
+                        isFavoriteList ? () => onRemove?.(repo.id) : undefined
+                      }
+                    />
+                  </li>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { RepoList } from "@/components/RepoList/RepoList";
 
 export const FavoritesList = () => {
-  return <RepoList typeList="favorite" />;
+  return <RepoList typeList="favorites" isFavoriteList />;
 };

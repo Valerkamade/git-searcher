@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  &:first-of-type::after {
+    content: "";
+    right: -10px;
+    top: 0;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: var(--border-color);
+  }
+}

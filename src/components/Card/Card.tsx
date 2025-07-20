@@ -1,16 +1,19 @@
 import type { Repo } from "@/components/RepoList/RepoList";
 import { Icons } from "@/components/ui/icons/Icons";
 import { VMButton } from "@/components/ui/VMButton/VMButton";
+import { useFavorites } from "@/hooks/useFavorites";
 import { useModal } from "@/hooks/useModal";
+import { cn } from "@/lib/class-name";
 import cls from "./Card.module.scss";
 
 interface CardProps {
   repo: Repo;
-  onClick?: () => void;
+  onRemove?: (id: number) => void;
 }
 
-export const Card = ({ repo }: CardProps) => {
+export const Card = ({ repo, onRemove }: CardProps) => {
   const { setIsOpen, setInfo } = useModal();
+  const { isFavorite } = useFavorites();
 
   const handleClickCard = () => {
     setIsOpen(true);
@@ -18,10 +21,12 @@ export const Card = ({ repo }: CardProps) => {
   };
 
   return (
-    <li className={cls.card}>
+    <div className={cls.card}>
       <VMButton
         as="div"
-        className={cls.cardButton}
+        className={cn(cls.cardButton, {
+          [cls.isFavorite]: isFavorite(repo.id),
+        })}
         typeButton="cards"
         onClick={handleClickCard}
       >
@@ -33,7 +38,7 @@ export const Card = ({ repo }: CardProps) => {
 
         <p className={cls.lang}>{repo.language}</p>
       </VMButton>
-      <div className={cls.wrapperButtons}>
+      <div className={cls.wrapperButtonsBottom}>
         <VMButton
           className={cls.button}
           type="button"
@@ -60,9 +65,21 @@ export const Card = ({ repo }: CardProps) => {
           {repo.forks_count}
         </VMButton>
       </div>
-      <VMButton className={cls.buttonDnd} typeButton="icon" type="button">
-        <Icons className={cls.dnd} type="dnd" />
-      </VMButton>
-    </li>
+      <div className={cls.wrapperButtonsTop}>
+        <VMButton className={cls.buttonDnd} typeButton="icon" type="button">
+          <Icons className={cls.dnd} type="dnd" />
+        </VMButton>
+        {onRemove && (
+          <VMButton
+            onClick={() => onRemove(repo.id)}
+            className={cls.removeButton}
+            type="button"
+            typeButton="icon"
+          >
+            <Icons type="trash" />
+          </VMButton>
+        )}
+      </div>
+    </div>
   );
 };

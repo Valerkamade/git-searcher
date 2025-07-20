@@ -1,10 +1,10 @@
 .card {
   width: 100%;
-  max-width: var(--card-width);
   position: relative;
-  height: max-content;
+  height: 150px;
   color: var(--text);
   text-align: start;
+  background-color: var(--background);
 }
 
 .cardButton {
@@ -16,10 +16,18 @@
   gap: 10px;
   justify-content: flex-start;
   text-align: start;
+
+  &.isFavorite {
+    background-color: var(--accent-90);
+  }
 }
 
 .title {
   font-size: var(--font-size-h2);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .owner {
@@ -43,11 +51,12 @@
   gap: 10px;
 }
 
-.wrapperButtons {
+.wrapperButtonsBottom {
   display: flex;
   gap: 10px;
   padding: 10px 0 0;
   margin-right: auto;
+
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -61,7 +70,7 @@
   z-index: 100;
 }
 
-.buttonDnd {
+.wrapperButtonsTop {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -72,4 +81,5 @@
   font-weight: bold;
   margin-left: auto;
   min-height: 20px;
+  line-height: 20px;
 }

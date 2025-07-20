@@ -6,8 +6,6 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
   const [info, setInfo] = useState(null);
   const [error, setError] = useState<string | null>(null);
 
-  console.log(info);
-
   const value = {
     isOpen,
     setIsOpen,

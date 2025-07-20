@@ -1,4 +1,4 @@
-.container {
+.repoList {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -6,16 +6,10 @@
   position: relative;
   padding-top: 20px;
   padding-bottom: 20px;
+}
 
-  &:first-of-type::after {
-    content: "";
-    right: -10px;
-    top: 0;
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    background-color: var(--border-color);
-  }
+.item {
+  width: 100%;
 }
 
 .message {
@@ -32,14 +26,32 @@
   align-items: center;
 }
 
-.repoList {
+.list {
   list-style: none;
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   justify-items: center;
+  align-content: start;
+  height: 100%;
 
   @media (min-width: 768px) {
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
+
+  @media (min-width: 1280px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+  }
+}
+
+[data-rbd-droppable-id] {
+  min-height: 100px;
+  position: relative;
+}
+
+[data-rbd-draggable-id] {
+  user-select: none;
 }

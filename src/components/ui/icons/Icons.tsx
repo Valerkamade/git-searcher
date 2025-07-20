@@ -4,10 +4,18 @@ import { MoonIcon } from "@/components/ui/icons/moon-icon/MoonIcon";
 import { SearchIcon } from "@/components/ui/icons/search-icon/SearchIcon";
 import { StarIcon } from "@/components/ui/icons/star-icon/StarIcon";
 import { SunIcon } from "@/components/ui/icons/sun-icon/SunIcon";
+import { TrashIcon } from "@/components/ui/icons/trash-icon/TrasnIcon";
 
 import type { SVGProps } from "react";
 
-export type TypeIcons = "search" | "moon" | "sun" | "star" | "dnd" | "fork";
+export type TypeIcons =
+  | "search"
+  | "moon"
+  | "sun"
+  | "star"
+  | "dnd"
+  | "fork"
+  | "trash";
 
 interface IconsProps extends SVGProps<SVGSVGElement> {
   type: TypeIcons;
@@ -38,6 +46,9 @@ export const Icons = (props: IconsProps) => {
       break;
     case "fork":
       icon = <ForkIcon {...props} />;
+      break;
+    case "trash":
+      icon = <TrashIcon {...props} />;
       break;
     default:
       icon = null;

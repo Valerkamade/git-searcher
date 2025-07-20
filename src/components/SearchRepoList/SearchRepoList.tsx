@@ -1,8 +1,8 @@
-import { RepoFilter } from "@/components/Filter/RepoFilter";
+import { RepoFilter } from "@/components/RepoFilter/RepoFilter";
 import { RepoList } from "@/components/RepoList/RepoList";
-import cls from "@/components/RepoList/RepoList.module.scss";
 import { useRepo } from "@/hooks/useRepo";
 import { useEffect, useState } from "react";
+import cls from "./SearchRepoList.module.scss";
 
 export const SearchRepoList = () => {
   const { repoList } = useRepo();
@@ -15,7 +15,7 @@ export const SearchRepoList = () => {
   return (
     <div className={cls.container}>
       <RepoFilter repos={repoList ?? []} onFilter={setFilteredRepoList} />
-      <RepoList filteredRepoList={filteredRepoList} />
+      <RepoList repos={filteredRepoList} typeList="search" />
     </div>
   );
 };
