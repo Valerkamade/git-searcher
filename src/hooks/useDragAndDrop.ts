@@ -35,8 +35,8 @@ export const useDragAndDrop = <T extends { id: number }>({
       source.droppableId === "favorites"
     ) {
       const newItems = [...items];
-
       const [movedItem] = newItems?.splice(source.index, 1);
+
       if (!movedItem) {
         console.error("Item not found at index", source.index);
         return;
@@ -54,18 +54,21 @@ export const useDragAndDrop = <T extends { id: number }>({
     ) {
       const itemToAdd = repoList?.find((item) => item.id === itemId);
 
-      const updatedFilteredList = filteredList?.filter(
-        (item) => item.id !== itemId,
-      );
-
-      if (!itemToAdd || !updatedFilteredList) {
+      if (!itemToAdd) {
         console.error("Item not found: ", itemId);
         return;
       }
 
-      setItems((prev) => (prev ? [...prev, itemToAdd] : [itemToAdd]));
+      const updatedFilteredList = filteredList?.filter(
+        (item) => item.id !== itemId,
+      );
+
+      // @ts-ignore
+      setItems((prev) => [...prev, itemToAdd]);
+
+      // @ts-ignore
       onAddItem?.(itemToAdd);
-      setFilteredList(updatedFilteredList);
+      setFilteredList(updatedFilteredList ?? []);
       return;
     }
 
@@ -82,7 +85,7 @@ export const useDragAndDrop = <T extends { id: number }>({
 
       setItems((prev) => prev?.filter((item) => item.id !== itemId));
       onRemoveItem?.(itemId);
-      setFilteredList([...filteredList, itemToRemove]);
+      setFilteredList([...(filteredList || []), itemToRemove]);
       return;
     }
 

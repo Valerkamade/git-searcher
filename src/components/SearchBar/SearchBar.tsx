@@ -28,7 +28,7 @@ export const SearchBar = () => {
       }
 
       const data = await response.json();
-      console.log(data.items);
+
       setRepoList(data.items);
       setFilteredList(data.items);
     } catch (err) {

@@ -31,20 +31,36 @@ export default defineConfig({
     },
   },
   build: {
-    lib: {
-      entry: path.resolve(__dirname, "src/main.ts"),
-      name: "SuperDatePicker",
-      fileName: (format: string) => `my-library.${format}.js`,
+    outDir: "dist",
+    assetsDir: "assets",
+    emptyOutDir: true,
+    sourcemap: true,
+
+    target: "es2015",
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        defaults: true,
+        drop_console: true,
+        drop_debugger: true,
+      },
     },
 
     rollupOptions: {
-      external: ["react", "react-dom"],
       output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
+        manualChunks: (id) => {
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
         },
+        entryFileNames: `assets/[name].[hash].js`,
+        chunkFileNames: `assets/[name].[hash].js`,
+        assetFileNames: `assets/[name].[hash].[ext]`,
       },
     },
+  },
+
+  optimizeDeps: {
+    include: ["core-js/stable", "regenerator-runtime/runtime"],
   },
 });
