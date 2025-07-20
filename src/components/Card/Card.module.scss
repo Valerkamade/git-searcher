@@ -5,6 +5,16 @@
   color: var(--text);
   text-align: start;
   background-color: var(--background);
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
 }
 
 .cardButton {
@@ -82,4 +92,11 @@
   margin-left: auto;
   min-height: 20px;
   line-height: 20px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

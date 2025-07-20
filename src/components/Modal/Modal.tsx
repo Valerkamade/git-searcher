@@ -28,9 +28,7 @@ export const Modal = ({ children }: ModalProps) => {
           type="button"
           onClick={onClose}
           typeButton="icon"
-        >
-          x
-        </VMButton>
+        />
         {children}
       </div>
     </div>,

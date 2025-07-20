@@ -9,34 +9,48 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  //  opacity: 0;
-  //  transition: opacity 0.3s;
-  visibility: hidden;
-
-  scale: 0;
-  transition: scale 1s ease-in-out;
-
+  opacity: 0;
+//  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0.3s ease-out;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+  
   &.visible {
-    //    opacity: 1;
-    scale: 1;
-    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    
+    .modalContent {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
   }
 }
 
 .modalContent {
   background: var(--background);
-  padding: 30px 20px;
-  border-radius: 8px;
+  padding: 30px;
+  border-radius: 12px;
   max-width: 500px;
-  width: 100%;
+  width: 90%;
   border: var(--border-width) solid var(--border-color);
   position: relative;
-  transform: translateY(-20px);
-  transition: transform 0.3s;
-
-  &.visible {
-    transform: translateY(0);
-  }
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.3s ease-in-out;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -46,4 +60,23 @@
   right: 5px;
   top: 5px;
   color: var(--foreground);
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+  }
+  
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
 }
