@@ -18,6 +18,7 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       typeButton="icon"
       type="button"
+      title="Тема"
     >
       <Icons type={theme === "light" ? "moon" : "sun"} width={22} height={22} />
     </VMButton>

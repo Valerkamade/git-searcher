@@ -29,6 +29,7 @@ export const RepoInfo = () => {
         <h3 className={cls.subtitle}>Наблюдатели:</h3>
         <VMButton
           className={cls.button}
+          title="Звездочеты"
           typeButton="icon"
           onClick={() => {
             console.log(info.stargazers_url);
@@ -40,6 +41,7 @@ export const RepoInfo = () => {
         <h3 className={cls.subtitle}>Форки:</h3>
         <VMButton
           className={cls.button}
+          title="Форки"
           type="button"
           typeButton="icon"
           onClick={() => {
