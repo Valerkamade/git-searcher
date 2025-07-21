@@ -29,10 +29,15 @@ export const SearchBar = () => {
 
       const data = await response.json();
 
+      if (data.items.length === 0) {
+        setError("Ничего не найдено!");
+        setIsOpen(true);
+      }
+
       setRepoList(data.items);
       setFilteredList(data.items);
     } catch (err) {
-      console.log("Error:", err);
+      console.error("Error:", err);
       setIsOpen(true);
       setError(err instanceof Error ? err.message : "Неизвестная ошибка");
       setRepoList([]);
@@ -64,7 +69,7 @@ export const SearchBar = () => {
 
           <VMInput
             id="search-input"
-            placeholder="Search..."
+            placeholder="Начните поиск"
             type="search"
             onChange={(e) => setQuery(e.target.value)}
           >

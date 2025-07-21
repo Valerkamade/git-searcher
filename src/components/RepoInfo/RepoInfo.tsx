@@ -14,9 +14,9 @@ export const RepoInfo = () => {
     <div className={cls.repoInfo}>
       <div className={cls.titleWrapper}>
         <h2 className={cls.title}>
-          <VMLink href={info.clone_url}>{info.name}</VMLink>
+          <VMLink href={info.html_url}>{info.name}</VMLink>
         </h2>
-        <VMLink className={cls.owner} href={info.html_url}>
+        <VMLink className={cls.owner} href={info.owner.html_url}>
           {info.owner.login}
         </VMLink>
       </div>

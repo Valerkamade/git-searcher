@@ -46,7 +46,7 @@ export const RepoFilter = ({}: RepoFilterProps) => {
       <VMInput
         id="name-filter"
         type="search"
-        placeholder="Введите название..."
+        placeholder="Фильтр по названиям"
         value={filterText}
         onChange={(e) => handleFilterChange(e.target.value)}
         className={cls.filterInput}
