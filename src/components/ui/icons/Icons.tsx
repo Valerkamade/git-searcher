@@ -1,5 +1,6 @@
 import { DndIcon } from "@/components/ui/icons/dnd-icon/DndIcon";
 import { ForkIcon } from "@/components/ui/icons/fork-icon/ForkIcon";
+import { LogoIcon } from "@/components/ui/icons/logo-icon/LogoIcon";
 import { MoonIcon } from "@/components/ui/icons/moon-icon/MoonIcon";
 import { SearchIcon } from "@/components/ui/icons/search-icon/SearchIcon";
 import { StarIcon } from "@/components/ui/icons/star-icon/StarIcon";
@@ -15,7 +16,8 @@ export type TypeIcons =
   | "star"
   | "dnd"
   | "fork"
-  | "trash";
+  | "trash"
+  | "logo";
 
 interface IconsProps extends SVGProps<SVGSVGElement> {
   type: TypeIcons;
@@ -49,6 +51,9 @@ export const Icons = (props: IconsProps) => {
       break;
     case "trash":
       icon = <TrashIcon {...props} />;
+      break;
+    case "logo":
+      icon = <LogoIcon {...props} />;
       break;
     default:
       icon = null;

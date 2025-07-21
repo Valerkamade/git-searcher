@@ -60,7 +60,7 @@ export const SearchBar = () => {
         <form className={cls.form} onSubmit={handleSubmit}>
           <VMButton
             className={cls.button}
-            title="Поиск"
+            data-tooltip="Поиск"
             type="submit"
             typeButton="icon"
             disabled={loading}

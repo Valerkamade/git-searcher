@@ -1,26 +1,23 @@
 import { type Theme, ThemeContext } from "@/context/ThemeContext";
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useState } from "react";
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const initialTheme =
+    (localStorage.getItem("theme") as Theme) ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
 
-  // Синхронизация с localStorage и системной темой
-  useEffect(() => {
-    const savedTheme =
-      (localStorage.getItem("theme") as Theme) ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-    setTheme(savedTheme);
-  }, []);
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
-  // Добавление класса темы к body
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+  const updateTheme = (newTheme: Theme) => {
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.body.className = newTheme;
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme: updateTheme }}>
       {children}
     </ThemeContext.Provider>
   );

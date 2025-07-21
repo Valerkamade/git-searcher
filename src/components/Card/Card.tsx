@@ -39,7 +39,7 @@ export const Card = ({ repo }: CardProps) => {
       </VMButton>
       <div className={cls.wrapperButtonsBottom}>
         <VMButton
-          title="Звездочеты"
+          data-tooltip="Звездочеты"
           className={cls.button}
           type="button"
           typeButton="icon"
@@ -54,7 +54,7 @@ export const Card = ({ repo }: CardProps) => {
 
         <VMButton
           className={cls.button}
-          title="Форки"
+          data-tooltip="Форки"
           type="button"
           typeButton="icon"
           onClick={() => {
@@ -71,7 +71,7 @@ export const Card = ({ repo }: CardProps) => {
           className={cls.buttonDnd}
           typeButton="icon"
           type="button"
-          title="Потяни"
+          data-tooltip="Потяни"
         >
           <Icons className={cls.dnd} type="dnd" />
         </VMButton>

@@ -14,9 +14,7 @@
   align-items: center;
   justify-content: center;
   color: var(--foreground);
-  max-height: min-content;
   gap: 5px;
-  min-width: 20px;
   min-height: 20px;
 
   &:hover {
@@ -25,7 +23,8 @@
   
   &:hover::after {
     z-index: 10;
-    content: attr(title);
+    content: attr(data-tooltip);
+    color: var(--text);
     background-color: var(--background);
     border:var(--border-width) solid var(--accent);
     padding: 5px;

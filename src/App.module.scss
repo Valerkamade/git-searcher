@@ -25,11 +25,19 @@
     grid-template-columns: 3fr 1fr;
     grid-template-areas: "search title";
   }
-  
+
   @media (min-width: 1280px) {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.wrapperLogo {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--text);
 }
 
 .menu {
@@ -54,7 +62,6 @@
   padding: 10px;
   grid-area: title;
   justify-self: center;
-  order: 2;
 }
 
 .wrapper {
@@ -80,3 +87,7 @@
   padding: 20px;
   border-top: var(--border-width) var(--border-color) solid;
 }
+
+//:export {
+//  accentColor: $accent
+//}
